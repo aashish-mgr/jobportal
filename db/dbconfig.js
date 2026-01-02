@@ -1,5 +1,7 @@
 const {Sequelize} = require('sequelize');
 
+//install sequelize and pg package before using this code
+
 const DatabaseUrl = "postgresql://postgres.nmpfcilxsxiaphtiglfr:Ash0984888%23%40@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
 
 const sequelize = new Sequelize(DatabaseUrl, {
