@@ -19,6 +19,12 @@ app.post('/home', (req,res) => {
   res.send("This is response to post");
 })
 
+const userRoute = require('./routes/userRoute');
+const jobRoute = require("./routes/jobRoute");
+
+app.use('/api/auth', userRoute);
+app.use('/api/job',jobRoute);
+
 
 app.listen(3000,() => {
 console.log('server is running on port 3000');
