@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const {connectDb} = require('./db/dbconfig');
 
+
+
 app.use(express.json());
 
 connectDb();

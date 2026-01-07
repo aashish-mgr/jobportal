@@ -19,7 +19,7 @@ const connectDb = async () => {
   try {
     await sequelize.authenticate();
     console.log("Connection has been established sucessfully");
-
+    require('../model/index'); //import all models to sync with db
     await sequelize.sync({alter:true,force:false});
   }
 
