@@ -52,7 +52,7 @@ if(!isPasswordValid){
 }
 
 //generate jwt token
-const token = jwt.sign({id: user.id}, "password", {
+const token = jwt.sign({id: user.id}, process.env.JWT_SECRET_KEY, {
   expiresIn: "20d"
 })
 

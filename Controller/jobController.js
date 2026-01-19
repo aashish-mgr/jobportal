@@ -1,7 +1,9 @@
 const {Job, User} = require("../model");
 
 const createJob = async (req, res) => {
-  const { title, company, description, salary, location, userId } = req.body;
+  const { title, company, description, salary, location } = req.body;
+
+  const userId = req.user.id;
 
   if (!title || !description || !location) {
     return res.status(400).json({ message: "Please provide all details" });

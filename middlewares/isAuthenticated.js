@@ -13,7 +13,7 @@ if(!token) {
 }
 
 //verify token 
-await jwt.verify(token,"password", async (err, decoded) => {
+await jwt.verify(token,process.env.JWT_SECRET_KEY, async (err, decoded) => {
     if(err){
         res.status(400).json({
             messgage: "token couldn't be verified"

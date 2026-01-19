@@ -1,14 +1,16 @@
 const { createJob, getAllJobs,getSingleJob,deleteJob, updateJob } = require('../Controller/jobController');
 const isAuthenticated = require('../middlewares/isAuthenticated');
-const restrictedTo = require('../middlewares/restrictedTo');
+const permittedRole = require('../middlewares/permittedRole');
+const asyncError = require('../services/asyncError');
 
 const Router = require('express').Router();
 
-Router.route('/create').post(isAuthenticated,restrictedTo('jobseeker'),createJob);
-Router.route('/findAll').get(getAllJobs);
-Router.route('/getSingle/:id').get(getSingleJob)
-Router.route('/delete/:id').delete(isAuthenticated,deleteJob)
-Router.route('/update/:id').patch(isAuthenticated,updateJob)
+Router.route('/create').post(isAuthenticated,permittedRole('jobprovider'),asyncError(createJob));
+Router.route('/findAll').get(asyncError(getAllJobs));
+Router.route('/getSingle/:id').get(asyncError(getSingleJob))
+Router.route('/delete/:id').delete(isAuthenticated,asyncError(deleteJob))
+Router.route('/update/:id').patch(isAuthenticated,asyncError(updateJob))
+
 
 
 module.exports = Router
